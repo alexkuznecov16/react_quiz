@@ -1,91 +1,115 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './index.css';
 
-function App() {
+const questions = [
+  {
+    title: 'HTML - what is it?',
+    variants: ['Hyper Text Markup Lang', 'Framework', 'Programming Lang', 'Python library'],
+    correct: 0,
+  },
+  {
+    title: 'Who is the author of Python?',
+    variants: ['James Gosling', 'Facebook', 'Guido van Rossum', 'Elon Musk'],
+    correct: 2,
+  },
+  {
+    title: 'What year was React founded?',
+    variants: ['1998', '2009', '2011', '2016'],
+    correct: 2,
+  },
+  {
+    title: 'Most used programming language?',
+    variants: ['Java', 'JavaScript', 'Go', 'Python'],
+    correct: 1,
+  },
+  {
+    title: 'City of programmers?',
+    variants: ['Paris', 'Moscow', 'Berlin', 'San Francisko'],
+    correct: 3,
+  },
+  {
+    title: 'What year was Windows founded?',
+    variants: ['1975', '1952', '1989', '2000'],
+    correct: 0,
+  },
+  {
+    title: 'What are the easiest programming languages ​to get started in IT?',
+    variants: ['C / C++', 'JavaScript', 'Python', 'Jjava'],
+    correct: 2,
+  },
+  {
+    title: 'What year was Linux founded?',
+    variants: ['2006', '2002', '1995', '1991'],
+    correct: 3,
+  },
+  {
+    title: 'React - it is ...?',
+    variants: ['HTML library', 'Framework', 'API', 'JS library'],
+    correct: 3,
+  },
+  {
+    title: 'React - it is ...?',
+    variants: ['HTML library', 'Framework', 'API', 'JS library'],
+    correct: 3,
+  },
+];
 
-  const quests = [
-    {
-      questText : 'The biggest country in the world?',
-      answerOptions : [
-        {answerText : 'USA', isCorrect : false},
-        {answerText : 'Russia', isCorrect : true},
-        {answerText : 'China', isCorrect : false},
-        {answerText : 'Germany', isCorrect : false},
-      ]
-    },
+function Result({score, questNums}){
+  return (
+    <div className='result'>
+      <img src="https://cdn-icons-png.flaticon.com/512/4381/4381479.png" alt="firework" />
+      <h2>You answered <span style={{color : 'red'}}>{score}</span> out of {questNums} questions</h2>
+      <a href='/'>
+      <button>Try again</button>
+      </a>
+    </div>
+    
+  )
+}
 
-    {
-      questText : 'The most titled football club?',
-      answerOptions : [
-        {answerText : 'Zenit', isCorrect : false},
-        {answerText : 'Barcelona', isCorrect : false},
-        {answerText : 'Real Madrid', isCorrect : true},
-        {answerText : 'Bayern Munich', isCorrect : false},
-      ]
-    },
+function Game({step, question, onClickAnswer}){
 
-    {
-      questText : 'The most spoken language in the world?',
-      answerOptions : [
-        {answerText : 'Russian', isCorrect : false},
-        {answerText : 'Chinese', isCorrect : true},
-        {answerText : 'English', isCorrect : false},
-        {answerText : 'Spanish', isCorrect : false},
-      ]
-    },
-
-    {
-      questText : 'The most popular person?',
-      answerOptions : [
-        {answerText : 'Elon Musk', isCorrect : true},
-        {answerText : 'Ariana Grande', isCorrect : false},
-        {answerText : 'Bill Gates', isCorrect : false},
-        {answerText : 'Cristiano Ronaldo', isCorrect : false},
-      ]
-    },
-  ]
-
-  const [currentQuest, setCurrentQuest] = useState(0); // По умолчанию стоит нуль.
-  const [score, setScore] = useState(0);
-  const [showScore, setShowScore] = useState(false);
-  const nextQuest = currentQuest + 1;
-
-  const answerOptClick = (isCorrect) =>{
-    if (isCorrect = true){
-      setScore(score + 1);
-    }
-  }
-
-  if (nextQuest < quests.length){
-    setCurrentQuest(nextQuest)
-  } else {
-    setShowScore(true);
-  }
+  const percentBar = Math.round(step / questions.length * 100);
 
   return(
+    <>
+    <div className='progress-bar'>
+      <div style={{ width: `${percentBar}%` }} className='bar'></div>
+    </div>
+    <h1>{question.title}</h1>
+    <ul> 
+      {question.variants.map((text, index) => ( // Ищем каждый вариант ответа с помошью .map()
+        <li onClick={() => onClickAnswer(index)}>{text}</li> // Выведится столько списков, сколько ответов.
+      ))}
+    </ul>
+  </>
+  );
+};
+
+
+
+function App() {
+  const questNums = questions.length;
+  const [step, setStep] = React.useState(0);
+  const question = questions[step];
+  const[score, setScore] = React.useState(0);
+  const[bar, setBar] = React.useState(0);
+
+  const onClickAnswer = (index) => {
+    if (index === question.correct){
+      setScore(score + 1);
+    }
+    setStep(step + 1);
+  }
+  return(
     <body>
-      <div className="app">
-        <div className="quiz">
-          <div className="question-block">
-            <div className="question-count">
-              <span className='user-count'>Quest №{currentQuest + 1}</span> <span className='all-count'>/ {quests.length}</span>
-            </div>
-            <div className="question-text">
-            {quests[currentQuest].questText}
-            </div>
-          </div>
-          <div className="answer-block">
-            {quests[currentQuest].answerOptions.map(item => // Из переменной с вопросами находим нужные данные.находим ответы и с помошью .map выводим каждый из них
-              (<button onClick={() => answerOptClick(item.isCorrect)}>{item.answerText}</button>) // item (цифра), всего ответа 4, так что цифры будет 4. 1 - ответ, 2 - ответ, 3 - ответ, 4 - ответ.
-            )}
-          </div>
-        </div>
-      </div>
-      <footer>
-        &copy; Alexander Kuznecov 2023
-      </footer>
+          <div className='Quiz'>
+            {
+              step != questNums ? <Game step={step} question = {question} onClickAnswer={onClickAnswer}/> : <Result score = {score} questNums = {questNums} />
+            }
+    </div>
     </body>
-  )
+  );
 }
 
 export default App;
