@@ -20,7 +20,7 @@ const questions = [
   {
     title: 'Most used programming language?',
     variants: ['Java', 'JavaScript', 'Go', 'Python'],
-    correct: 1 || 3,
+    correct: 1,
   },
   {
     title: 'City of programmers?',
@@ -33,7 +33,7 @@ const questions = [
     correct: 0,
   },
   {
-    title: 'What are the easiest programming languages ​to get started in IT?',
+    title: 'What are the easiest programming lang for beginners',
     variants: ['C / C++', 'JavaScript', 'Python', 'Java'],
     correct: 2,
   },
