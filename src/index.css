@@ -48,14 +48,14 @@ code {
 
 .progress-bar{
   height: 10px;
-  width: 500px;
+  width: 100%;
   border-radius: 5px;
   background-color: rgb(145, 145, 145);
 }
 
 .progress-bar .bar{
   height: 10px;
-  background-color: rgb(240, 69, 69);
+  background-image: linear-gradient(to right, #ff0000, #ff0039, #ff0060, #ff0086, #ff00aa);
   border-radius: 10px;
   transition: .2s linear;
 }
@@ -89,56 +89,6 @@ ul li:hover{
   -webkit-transform: scale(1.033);
   transform: scale(1.033);
   background-color: rgb(4, 181, 181);
-}
-
-.quiz-inner{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.question-block{
-  flex: 0 0 50%;
-}
-
-.question-count{
-  margin-bottom: 40px;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.question-text{
-  font-size: 21px;
-}
-
-.user-count{
-  font-size: 30px;
-}
-
-.all-count{
-  color: #aaaaaa;
-}
-
-.answer-block{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  row-gap: 10px;
-}
-
-.answer-block button {
-  cursor: pointer;
-  padding: 13px;
-  border-radius: 20px;
-  background: transparent;
-  border: 2px solid darkcyan;
-  transition: .1s linear;
-}
-
-.answer-block button:hover{
-  -webkit-transform: scale(1.070);
-  transform: scale(1.070);
-  background: cadetblue;
 }
 
 
@@ -181,4 +131,70 @@ ul li:hover{
 .result button:hover{
   -webkit-transform: scale(1.070);
   transform: scale(1.070);
+}
+
+
+/*! Media screen  */
+
+@media screen and (min-width: 2000px){
+  .Quiz{
+    width: 800px;
+  }
+  .result img{
+    width: 300px;
+  }
+  h1{
+    font-size: 41px;
+  }
+  .result h2{
+    font-size: 35px;
+  }
+  ul li{
+    font-size: 29px;
+  }
+  .result button{
+    font-size: 35px;
+  }
+  .progress-bar{
+    height: 15px;
+  }
+  .progress-bar .bar{
+    height: 15px;
+  }
+}
+
+@media screen and (max-width: 570px){
+  .Quiz{
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 440px){
+  .Quiz{
+    width: 300px;
+  }
+  h1{
+    font-size: 25px;
+  }
+  .result h2{
+    font-size: 23px;
+  }
+}
+
+@media screen and (max-width: 320px){
+  .Quiz{
+    width: 190px;
+  }
+  .result img{
+    width: 100px;
+  }
+  h1{
+    font-size: 20px;
+  }
+  .result h2{
+    font-size: 15px;
+  }
+  ul li{
+    font-size: 10px;
+  }
 }
