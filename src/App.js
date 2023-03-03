@@ -20,7 +20,7 @@ const questions = [
   {
     title: 'Most used programming language?',
     variants: ['Java', 'JavaScript', 'Go', 'Python'],
-    correct: 1,
+    correct: 1 || 3,
   },
   {
     title: 'City of programmers?',
@@ -34,7 +34,7 @@ const questions = [
   },
   {
     title: 'What are the easiest programming languages ​to get started in IT?',
-    variants: ['C / C++', 'JavaScript', 'Python', 'Jjava'],
+    variants: ['C / C++', 'JavaScript', 'Python', 'Java'],
     correct: 2,
   },
   {
@@ -43,14 +43,14 @@ const questions = [
     correct: 3,
   },
   {
-    title: 'React - it is ...?',
-    variants: ['HTML library', 'Framework', 'API', 'JS library'],
+    title: 'Which programming language does not require a ";" at the end of a function?',
+    variants: ['Java', 'Python', 'C#', 'Ruby'],
     correct: 3,
   },
   {
-    title: 'React - it is ...?',
-    variants: ['HTML library', 'Framework', 'API', 'JS library'],
-    correct: 3,
+    title: 'Which of the following is not a programming language?',
+    variants: ['HTML', 'Ruby', 'Python', 'Java'],
+    correct: 0,
   },
 ];
 
